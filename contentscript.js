@@ -3,8 +3,6 @@ $(document).ready(function(){
   var fatTotal = parseInt($(".total:first td:nth-child(4)").text());
   var proteinTotal = parseInt($(".total:first td:nth-child(5)").text());
 
-  
-
   function getMacro(macro, i)
   {
     chrome.storage.local.get(macro, function(data){
@@ -18,9 +16,6 @@ $(document).ready(function(){
 
   function updateMacroDOM(data, td, calorie)
   {
-    chrome.tabs.executeScript({
-        code: 'console.log("addd")'
-    });
     $(".total.alt td:nth-child("+td+")").text(data);
     $(".total.remaining td:nth-child("+td+")").text(data - parseInt($(".total:first td:nth-child("+td+")").text()));
     if(parseInt($(".total.remaining td:nth-child("+td+")").text()) < 0)
